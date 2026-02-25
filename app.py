@@ -100,6 +100,7 @@ else:
                 columnas_vista = ["Cod","Doc_NUI","Institución", "Actividad","Documento", "Observación MSC", "Observaciones Gestor", "Subsanado"]
 
                 st.subheader("📋 Documentos con observaciones")
+                st.info(f"📊 Tienes **{len(mis_pendientes)}** documentos con observaciones pendientes de gestionar.")
                 
                 edited_df = st.data_editor(
                     mis_pendientes[columnas_vista],
@@ -193,4 +194,5 @@ else:
     except Exception as e:
 
         st.error(f"Error de visualización: {e}")
+
 
