@@ -30,6 +30,27 @@ def cargar_datos(url):
         st.error(f"Error al cargar CSV: {e}")
         return pd.DataFrame()
 
+
+# Inyectar CSS para ocultar el encabezado y el menú de Streamlit
+estilo_custom = """
+    <style>
+        /* Ocultar el encabezado (Header) donde aparece 'Share', 'Edit', etc. */
+        header {visibility: hidden;}
+        
+        /* Ocultar el menú de hamburguesa (las 3 rayas de la derecha) */
+        #MainMenu {visibility: hidden;}
+        
+        /* Ocultar el pie de página "Made with Streamlit" */
+        footer {visibility: hidden;}
+        
+        /* Ajustar el espacio que deja el encabezado oculto */
+        .block-container {
+            padding-top: 2rem;
+        }
+    </style>
+"""
+st.markdown(estilo_custom, unsafe_allow_html=True)
+
 # --- SISTEMA DE LOGIN ---
 if 'autenticado' not in st.session_state:
     st.session_state.autenticado = False
@@ -172,3 +193,4 @@ else:
     except Exception as e:
 
         st.error(f"Error de visualización: {e}")
+
