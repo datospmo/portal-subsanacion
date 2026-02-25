@@ -78,7 +78,7 @@ else:
                 # Definimos las columnas que queremos ver y capturar
                 columnas_vista = ["Cod","Doc_NUI","Institución", "Actividad","Documento", "Observación MSC", "Observaciones Gestor", "Subsanado"]
 
-                st.subheader("📋 Gestión de Hallazgos")
+                st.subheader("📋 Documentos con observaciones")
                 
                 edited_df = st.data_editor(
                     mis_pendientes[columnas_vista],
@@ -97,7 +97,7 @@ else:
                     key="editor_v12"
                 )
 
-                if st.button("💾 Procesar Seleccionados", use_container_width=True):
+                if st.button("💾 Procesar", use_container_width=True):
                     seleccionados = edited_df[edited_df['Subsanado'] == True].copy()
                     
                     if not seleccionados.empty:
@@ -110,7 +110,7 @@ else:
                             
                             if st.button("✅ Confirmar y Guardar"):
                                 try:
-                                    with st.spinner("Guardando directamente en la base de datos..."):
+                                    with st.spinner("Guardando en la base de datos..."):
                                         import gspread
                                         from google.oauth2.service_account import Credentials
 
@@ -168,6 +168,7 @@ else:
                     else:
                         st.warning("⚠️ Selecciona al menos una casilla.")
             else:
-                st.success("🎉 No tienes pendientes registrados.")
+                st.success("🎉 No tienes documentos por subsanar!")
     except Exception as e:
+
         st.error(f"Error de visualización: {e}")
