@@ -34,18 +34,13 @@ def cargar_datos(url):
 # Inyectar CSS para ocultar el encabezado y el menú de Streamlit
 estilo_custom = """
     <style>
-        /* Ocultar el encabezado (Header) donde aparece 'Share', 'Edit', etc. */
-        header {visibility: hidden;}
-        
-        /* Ocultar el menú de hamburguesa (las 3 rayas de la derecha) */
         #MainMenu {visibility: hidden;}
-        
-        /* Ocultar el pie de página "Made with Streamlit" */
         footer {visibility: hidden;}
-        
-        /* Ajustar el espacio que deja el encabezado oculto */
-        .block-container {
-            padding-top: 2rem;
+        header {visibility: hidden;}
+        /* Esto asegura que el botón de cerrar sesión en el sidebar no se oculte */
+        [data-testid="stSidebarNav"] {display: none;}
+        .stButton button {
+            width: 100%;
         }
     </style>
 """
@@ -194,5 +189,6 @@ else:
     except Exception as e:
 
         st.error(f"Error de visualización: {e}")
+
 
 
