@@ -387,3 +387,4 @@ else:
 
     except Exception as e:
         st.error(f"Error general en la aplicación: {e}")
+
