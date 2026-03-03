@@ -33,14 +33,25 @@ def cargar_datos(url):
         return pd.DataFrame()
 
 # Inyectar CSS para ocultar el encabezado y el menú de Streamlit
+# Tu código actual mejorado
 estilo_custom = """
     <style>
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
         header {visibility: hidden;}
+        
+        /* Oculta el menú lateral de navegación */
         [data-testid="stSidebarNav"] {display: none;}
+        
+        /* Botones al 100% de ancho */
         .stButton button {
             width: 100%;
+        }
+
+        /* OPCIONAL: Quitar el espacio en blanco que queda arriba al ocultar el header */
+        .block-container {
+            padding-top: 1rem;
+            padding-bottom: 0rem;
         }
     </style>
 """
@@ -386,4 +397,5 @@ else:
 
 
     except Exception as e:
+
         st.error(f"Error general en la aplicación: {e}")
